@@ -49,6 +49,49 @@ module.exports = function(deployer) {
 
 // * * READS ON THE BLOCKCHAON ARE FREE
 //   BUT WRITE COST GAS
+// ==> So, whenever we deploy a contract to the
+//    blockchain it will cost Ehereum
+
+// Since in a contract the data is immutable, if
+// for development reasons we change it, then we need 
+// to reset the blockchain.
+
+// $ truffle migrate --reset 
+
+
+
+// truffle(development)> app.candidates(1).then(function(c) {candidate = c})
+// undefined
+// truffle(development)> candidate[0].toNumber()
+// 1
+// truffle(development)> candidate[1].toString()
+// 'Candidate 1'
+// truffle(development)> candidate[2].toNumber()
+// 0
+// truffle(development)> app.candidates(2).then(function(c) {candidate = c})
+// undefined
+// truffle(development)> candidate[0].toNumber()
+// 2
+// truffle(development)> candidate[2].toNumber()
+// 0
+// truffle(development)> candidate[1].toString()
+// 'Candidate 2'
+// truffle(development)> app.candidates(3).then(function(c) {candidate = c})
+// undefined
+// truffle(development)> candidate[0].toNumber()
+// 3
+// truffle(development)> candidate[1].toString()
+// 'Candidate 3'
+// truffle(development)> candidate[2].toNumber()
+// 0
+
+// truffle(development)>
+
+//  >> web3
+//  >> web3.eth
+//  >> web3.eth.accounts
+//  >> web3.eth.accounts[4]
+
 
 
 
