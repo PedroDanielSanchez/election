@@ -60,7 +60,7 @@ App = {
     loader.show();
     content.hide();
 
-    // Load account data
+    // Load account data that I am connected with to blockchain
     web3.eth.getCoinbase(function(err, account) {
       if (err === null) {
         App.account = account;
@@ -90,16 +90,16 @@ App = {
           candidatesResults.append(candidateTemplate);
 
           // Render candidate ballot option
-          //pedro var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
-          // pedro candidatesSelect.append(candidateOption);
+          var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
+          candidatesSelect.append(candidateOption);
         });
       }
-    //   return electionInstance.voters(App.account);
-    // }).then(function(hasVoted) {
-    //   // Do not allow a user to vote
-    //   if(hasVoted) {
-    //     $('form').hide();
-    //   }
+       return electionInstance.voters(App.account);
+     }).then(function(hasVoted) {
+       // Do not allow a user to vote
+       if(hasVoted) {
+         $('form').hide();
+       }
       loader.hide();
       content.show();
     }).catch(function(error) {
@@ -110,7 +110,7 @@ App = {
   castVote: function() {
     var candidateId = $('#candidatesSelect').val();
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(candidateId, { from: App.account });
+      return instance.voting(candidateId, { from: App.account });
     }).then(function(result) {
       // Wait for votes to update
       $("#content").hide();

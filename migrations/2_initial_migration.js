@@ -92,6 +92,53 @@ module.exports = function(deployer) {
 //  >> web3.eth.accounts
 //  >> web3.eth.accounts[4]
 
+// ========== TESTING THE Voting function in the Contract
+
+// $ truffle console
+// truffle(development)> Election.deployed().then(function(instance) {app=instance});
+// >> web3.eth.accounts[4]
+// app.voting(1, {from: web3.eth.accounts[0]})
+
+// Then it shows the transaction receipt as follows:
+
+// { tx: '0x82f15c67268629fb12037bb468215032095b43b03c25375e9e79aa2221c1866e',
+//   receipt:
+//    { transactionHash: '0x82f15c67268629fb12037bb468215032095b43b03c25375e9e79aa2221c1866e',
+//      transactionIndex: 0,
+//      blockHash: '0xaa74a35957d9c928eecfd4be10c68c0628fec4adae9fcf668dac4e8d1a7dec1f',
+//      blockNumber: 9,
+//      gasUsed: 62746,
+//      cumulativeGasUsed: 62746,
+//      contractAddress: null,
+//      logs: [],
+//      status: '0x01',
+//      logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000' },
+//   logs: [] }
+// truffle(development)>
+
+// * * * * * * * * * * GAS * * * * * * * * *
+//
+// Whenever an Account calls a Contract function it has to 
+// pay GAS in the Ethereum network
+// Reads from the Ethereum network are free
+// Writes from the Ethereum network cost GAS
+// GAS (unit within itself not = Ethereum price) 
+// To Get Ethereum equivalent of GAS: 
+//     Multiply GAS Usage by GAS Price to obtain Ethereum Amount
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -16,6 +16,10 @@ contract Election {
 	mapping(uint => Candidate) public candidates;
 	// Fetch the candidate from Storage
 
+    // Store People (Addresses) that has voted for a candidate (uint)
+    // If nothing in it, bool value defaults to false
+    mapping(address => bool) public voters;
+
 	// Store How many candidates (like a counter 'cache')
 	// We increment it when we add a Candidate, 
 	// we can use inside of a loop over all candidates
@@ -33,4 +37,26 @@ contract Election {
 		                              // Instantiate a Candidate
 		candidates[candidatesCount] = Candidate(candidatesCount,_name,0);
 	}
+
+	// An external account should/can call this function
+	function voting(uint _candidateId) public {
+
+		// require evaluates to true or false, if false exits the function with false
+
+		// require a valid candidate ( 1.. Total Candidates)
+		require(_candidateId > 0 && _candidateId <= candidatesCount);
+
+        // require that a voter hasn't voted before
+		require(!voters[msg.sender]); 
+
+		// record that a voter has voted
+			voters[msg.sender]=true;
+		// update candidate vote count
+			candidates[_candidateId].voteCount++;
+
+	}
 }
+
+
+
+
